@@ -1,29 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Travel Recommendation</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travel Recommendations</title>
+  <link rel="stylesheet" href="styles.css"> <!-- Update this if needed -->
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="travel_recommendation.html">Home</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-        </ul>
-        <div>
-            <input type="text" id="searchBar" placeholder="Search for destinations...">
-            <button id="searchBtn">Search</button>
-            <button id="resetBtn">Reset</button>
-        </div>
-    </nav>
+  <nav>
+    <h1>Travel Recommendation</h1>
+    <ul>
+      <li><a href="travel_recommendation.html">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+    </ul>
+    <input type="text" id="searchInput" placeholder="Enter a keyword (e.g. beach, temple)">
+    <button id="searchBtn">Search</button>
+    <button id="resetBtn">Reset</button>
+  </nav>
 
-    <section id="results">
-        <!-- Recommendations will be dynamically inserted here -->
-    </section>
+  <div id="recommendationResults"></div> <!-- For displaying search results -->
 
-    <script src="travel_recommendation.js"></script>
+  <script src="travel_recommendation.js"></script>
 </body>
 </html>
