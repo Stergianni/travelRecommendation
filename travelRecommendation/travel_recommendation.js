@@ -57,12 +57,21 @@ async function fetchRecommendations() {
     }
   }
   
+  // Function to clear the search results when the clear button is clicked
+  function clearResults() {
+    document.getElementById('searchInput').value = ''; // Clear the search input
+    document.getElementById('recommendationResults').innerHTML = ''; // Clear the results container
+  }
+  
   // Event listener for the search button
   document.getElementById('searchBtn').addEventListener('click', handleSearch);
   
-  // Reset the search results when reset button is clicked
+  // Event listener for the reset button (optional, if you have a reset button)
   document.getElementById('resetBtn').addEventListener('click', () => {
     document.getElementById('searchInput').value = '';
     document.getElementById('recommendationResults').innerHTML = '';
   });
+  
+  // Event listener for the clear button (new functionality)
+  document.getElementById('clearBtn').addEventListener('click', clearResults);
   
