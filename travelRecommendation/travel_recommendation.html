@@ -3,15 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Travel Recommendation</title>
+  <title>Travel Recommendation - Home</title>
   <style>
-    /* Basic navbar styling */
+    /* Background image */
+    body {
+      background-image: url('https://www.example.com/background-image.jpg'); /* Add the image URL here */
+      background-size: cover;
+      background-position: center;
+      color: white;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Navbar Styling */
     nav {
-      background-color: #333;
-      padding: 10px;
+      background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent navbar */
+      padding: 15px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
     }
 
     nav ul {
@@ -35,29 +50,41 @@
       color: #f39c12;
     }
 
-    /* Search Bar Styling */
-    #search-container {
-      display: flex;
-      align-items: center;
+    /* Home page content */
+    .home-content {
+      text-align: center;
+      margin-top: 100px;
+      padding: 50px 20px;
     }
 
-    #search-container input {
-      padding: 5px;
-      font-size: 16px;
+    .home-content h1 {
+      font-size: 48px;
+      margin-bottom: 20px;
     }
 
-    #search-container button {
-      padding: 6px 12px;
-      background-color: #f39c12;
+    .home-content p {
+      font-size: 20px;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.5;
+    }
+
+    /* Social Media Icons */
+    .social-icons {
+      margin-top: 30px;
+    }
+
+    .social-icons a {
+      margin: 0 10px;
+      font-size: 30px;
       color: white;
-      border: none;
-      cursor: pointer;
-      margin-left: 10px;
+      text-decoration: none;
     }
 
-    #search-container button:hover {
-      background-color: #e67e22;
+    .social-icons a:hover {
+      color: #f39c12;
     }
+
   </style>
 </head>
 <body>
@@ -69,7 +96,6 @@
       <li><a href="contact.html">Contact Us</a></li>
     </ul>
 
-    <!-- Search Bar -->
     <div id="search-container">
       <input type="text" id="searchInput" placeholder="Search recommendations...">
       <button id="searchBtn">Search</button>
@@ -77,17 +103,29 @@
     </div>
   </nav>
 
-  <h1>Welcome to Travel Recommendation!</h1>
-  <p>Find the best travel recommendations and tips here.</p>
+  <!-- Home Page Content -->
+  <div class="home-content">
+    <h1>Welcome to Travel Recommendation!</h1>
+    <p>Discover the best travel destinations, tips, and recommendations tailored to your interests. Whether you're planning a vacation or seeking adventure, we provide personalized recommendations to help you explore the world!</p>
+
+    <div class="social-icons">
+      <a href="https://www.facebook.com" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
+      <a href="https://twitter.com" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+      <a href="https://www.instagram.com" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.linkedin.com" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+    </div>
+  </div>
+
+  <!-- External Scripts for Icons -->
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 
   <script>
     // Reset button functionality
     document.getElementById('resetBtn').addEventListener('click', function() {
       document.getElementById('searchInput').value = ''; // Clear search input
-      // You can also clear any displayed results here if needed
     });
 
-    // Search button functionality (for future use when implementing search functionality)
+    // Search button functionality
     document.getElementById('searchBtn').addEventListener('click', function() {
       const query = document.getElementById('searchInput').value;
       if (query) {
