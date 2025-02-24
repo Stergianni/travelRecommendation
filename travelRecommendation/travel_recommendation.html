@@ -1,139 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Travel Recommendation - Home</title>
-  <style>
-    /* Background image */
-    body {
-      background-image: url('https://www.example.com/background-image.jpg'); /* Add the image URL here */
-      background-size: cover;
-      background-position: center;
-      color: white;
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-
-    /* Navbar Styling */
-    nav {
-      background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent navbar */
-      padding: 15px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 1000;
-    }
-
-    nav ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-    }
-
-    nav ul li {
-      margin-right: 20px;
-    }
-
-    nav ul li a {
-      color: white;
-      text-decoration: none;
-      font-size: 18px;
-    }
-
-    nav ul li a:hover {
-      color: #f39c12;
-    }
-
-    /* Home page content */
-    .home-content {
-      text-align: center;
-      margin-top: 100px;
-      padding: 50px 20px;
-    }
-
-    .home-content h1 {
-      font-size: 48px;
-      margin-bottom: 20px;
-    }
-
-    .home-content p {
-      font-size: 20px;
-      max-width: 600px;
-      margin: 0 auto;
-      line-height: 1.5;
-    }
-
-    /* Social Media Icons */
-    .social-icons {
-      margin-top: 30px;
-    }
-
-    .social-icons a {
-      margin: 0 10px;
-      font-size: 30px;
-      color: white;
-      text-decoration: none;
-    }
-
-    .social-icons a:hover {
-      color: #f39c12;
-    }
-
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Recommendation</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- Navbar -->
-  <nav>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About Us</a></li>
-      <li><a href="contact.html">Contact Us</a></li>
-    </ul>
+    <nav>
+        <ul>
+            <li><a href="travel_recommendation.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+        <div>
+            <input type="text" id="searchBar" placeholder="Search for destinations...">
+            <button id="searchBtn">Search</button>
+            <button id="resetBtn">Reset</button>
+        </div>
+    </nav>
 
-    <div id="search-container">
-      <input type="text" id="searchInput" placeholder="Search recommendations...">
-      <button id="searchBtn">Search</button>
-      <button id="resetBtn">Reset</button>
-    </div>
-  </nav>
+    <section id="results">
+        <!-- Recommendations will be dynamically inserted here -->
+    </section>
 
-  <!-- Home Page Content -->
-  <div class="home-content">
-    <h1>Welcome to Travel Recommendation!</h1>
-    <p>Discover the best travel destinations, tips, and recommendations tailored to your interests. Whether you're planning a vacation or seeking adventure, we provide personalized recommendations to help you explore the world!</p>
-
-    <div class="social-icons">
-      <a href="https://www.facebook.com" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
-      <a href="https://twitter.com" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
-      <a href="https://www.instagram.com" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-      <a href="https://www.linkedin.com" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-    </div>
-  </div>
-
-  <!-- External Scripts for Icons -->
-  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-
-  <script>
-    // Reset button functionality
-    document.getElementById('resetBtn').addEventListener('click', function() {
-      document.getElementById('searchInput').value = ''; // Clear search input
-    });
-
-    // Search button functionality
-    document.getElementById('searchBtn').addEventListener('click', function() {
-      const query = document.getElementById('searchInput').value;
-      if (query) {
-        alert('Searching for: ' + query);  // Placeholder for actual search functionality
-      } else {
-        alert('Please enter a search keyword.');
-      }
-    });
-  </script>
+    <script src="travel_recommendation.js"></script>
 </body>
 </html>
