@@ -4,10 +4,98 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Travel Recommendation</title>
+  <style>
+    /* Basic navbar styling */
+    nav {
+      background-color: #333;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+
+    nav ul li {
+      margin-right: 20px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+    }
+
+    nav ul li a:hover {
+      color: #f39c12;
+    }
+
+    /* Search Bar Styling */
+    #search-container {
+      display: flex;
+      align-items: center;
+    }
+
+    #search-container input {
+      padding: 5px;
+      font-size: 16px;
+    }
+
+    #search-container button {
+      padding: 6px 12px;
+      background-color: #f39c12;
+      color: white;
+      border: none;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+
+    #search-container button:hover {
+      background-color: #e67e22;
+    }
+  </style>
 </head>
 <body>
-  <!-- Placeholder content, will add more later -->
+  <!-- Navbar -->
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+    </ul>
+
+    <!-- Search Bar -->
+    <div id="search-container">
+      <input type="text" id="searchInput" placeholder="Search recommendations...">
+      <button id="searchBtn">Search</button>
+      <button id="resetBtn">Reset</button>
+    </div>
+  </nav>
+
   <h1>Welcome to Travel Recommendation!</h1>
   <p>Find the best travel recommendations and tips here.</p>
+
+  <script>
+    // Reset button functionality
+    document.getElementById('resetBtn').addEventListener('click', function() {
+      document.getElementById('searchInput').value = ''; // Clear search input
+      // You can also clear any displayed results here if needed
+    });
+
+    // Search button functionality (for future use when implementing search functionality)
+    document.getElementById('searchBtn').addEventListener('click', function() {
+      const query = document.getElementById('searchInput').value;
+      if (query) {
+        alert('Searching for: ' + query);  // Placeholder for actual search functionality
+      } else {
+        alert('Please enter a search keyword.');
+      }
+    });
+  </script>
 </body>
 </html>
