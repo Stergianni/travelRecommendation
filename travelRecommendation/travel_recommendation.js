@@ -1,45 +1,44 @@
-// Sample data for recommendations (can be fetched from the JSON file)
-const recommendations = [
-    { name: 'Beach Resort', category: 'beach', description: 'A beautiful sandy beach resort.' },
-    { name: 'Ancient Temple', category: 'temple', description: 'A historical temple with rich culture.' },
-    { name: 'Tropical Island', category: 'beach', description: 'A peaceful tropical island with stunning beaches.' },
-    { name: 'Golden Temple', category: 'temple', description: 'A sacred golden temple in the mountains.' },
-    { name: 'Paris', category: 'country', description: 'The capital city of France, known for its culture and landmarks.' },
-    { name: 'New York', category: 'country', description: 'A major city in the USA with a rich cultural history.' }
-  ];
+// Function to fetch recommendations from the JSON file
+async function fetchRecommendations() {
+    try {
+      const response = await fetch('travel_recommendation_api.json');
+      const data = await response.json();
+      return data; // Return all the data (countries, temples, beaches)
+    } catch (error) {
+      console.error('Error fetching the recommendations:', error);
+      return {};
+    }
+  }
   
-  // Function to search recommendations based on user input
-  function searchRecommendations() {
-    const searchInput = document.getElementById('searchInput').value.trim().toLowerCase(); // Capture user input
+  // Function to display the recommendations based on the keyword
+  async function displayRecommendations(keyword) {
+    const data = await fetchRecommendations();
     const resultsContainer = document.getElementById('recommendationResults');
     resultsContainer.innerHTML = ''; // Clear previous results
   
-    if (!searchInput) {
-      resultsContainer.innerHTML = 'Please enter a keyword to search.';
-      return;
+    // Normalize the keyword to lowercase for case-insensitive comparison
+    const normalizedKeyword = keyword.toLowerCase();
+    
+    // Filter data based on the keyword (beach, temple, or country)
+    let filteredResults = [];
+  
+    if (normalizedKeyword === 'beach') {
+      filteredResults = data.beaches || [];
+    } else if (normalizedKeyword === 'temple') {
+      filteredResults = data.temples || [];
+    } else if (normalizedKeyword === 'country') {
+      filteredResults = data.countries || [];
     }
   
-    // Normalize variations of keywords (e.g., pluralization)
-    const keywords = ['beach', 'temple', 'country'];
-    const normalizedInput = searchInput.toLowerCase();
-  
-    const filteredRecommendations = recommendations.filter(rec => {
-      // Check if the category or name contains the keyword
-      return (
-        rec.name.toLowerCase().includes(normalizedInput) || 
-        rec.category.toLowerCase().includes(normalizedInput)
-      );
-    });
-  
-    if (filteredRecommendations.length > 0) {
-      filteredRecommendations.forEach(rec => {
-        // Create and display result items
+    // If results are found, display them
+    if (filteredResults.length > 0) {
+      filteredResults.forEach(item => {
         const resultItem = document.createElement('div');
         resultItem.classList.add('recommendation-item');
         resultItem.innerHTML = `
-          <h3>${rec.name}</h3>
-          <p><strong>Category:</strong> ${rec.category}</p>
-          <p>${rec.description}</p>
+          <h3>${item.name}</h3>
+          <img src="${item.imageUrl}" alt="${item.name}" />
+          <p>${item.description}</p>
         `;
         resultsContainer.appendChild(resultItem);
       });
@@ -48,13 +47,22 @@ const recommendations = [
     }
   }
   
-  // Function to reset search results
-  function resetSearch() {
-    document.getElementById('searchInput').value = ''; // Clear the input field
-    document.getElementById('recommendationResults').innerHTML = ''; // Clear the results
+  // Function to handle the search button click
+  function handleSearch() {
+    const searchInput = document.getElementById('searchInput').value.trim();
+    if (searchInput) {
+      displayRecommendations(searchInput);
+    } else {
+      document.getElementById('recommendationResults').innerHTML = 'Please enter a valid keyword to search.';
+    }
   }
   
-  // Event listeners for buttons
-  document.getElementById('searchBtn').addEventListener('click', searchRecommendations);
-  document.getElementById('resetBtn').addEventListener('click', resetSearch);
+  // Event listener for the search button
+  document.getElementById('searchBtn').addEventListener('click', handleSearch);
+  
+  // Reset the search results when reset button is clicked
+  document.getElementById('resetBtn').addEventListener('click', () => {
+    document.getElementById('searchInput').value = '';
+    document.getElementById('recommendationResults').innerHTML = '';
+  });
   
